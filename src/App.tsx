@@ -12,16 +12,19 @@ function App() {
         register,
         formState: {
             errors,
+            isValid
         },
         handleSubmit,
+        reset,
     } = useForm({
-        mode:'onBlur'
+        mode: 'onBlur'
     });
 
     const onSubmit = (data: SubmitType) => {
         console.log(typeof data)
         console.log(data)
         alert(JSON.stringify(data))
+        reset()
     }
 
     return (
@@ -67,7 +70,7 @@ function App() {
                 </div>
 
 
-                <input type="submit"/>
+                <input type="submit" disabled={!isValid}/>
             </form>
         </div>
     );
